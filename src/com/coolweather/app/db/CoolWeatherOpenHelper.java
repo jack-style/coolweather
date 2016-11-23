@@ -1,11 +1,12 @@
-package db;
+package com.coolweather.app.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
+import android.database.sqlite.SQLiteOpenHelper;
 
 
-public class CoolWeatherOpenHelper {
+public class CoolWeatherOpenHelper extends SQLiteOpenHelper {
 	/**
 	 * 
 	 */
@@ -30,7 +31,7 @@ public class CoolWeatherOpenHelper {
 			+ "county_code text,"
 			+ "city_id integer)";
 	public CoolWeatherOpenHelper(Context context, String name, CursorFactory factory,int version) {
-		super();
+		super(context, name, factory, version);
 	}
 	public void onCreate(SQLiteDatabase db) {
 		db.execSQL(CREATE_PROVINCE);
@@ -39,7 +40,6 @@ public class CoolWeatherOpenHelper {
 	}
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 	}
-	public SQLiteDatabase getWritableDatabase() {
-			return null;
-	}
+	
+	
 }
